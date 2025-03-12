@@ -20,7 +20,7 @@ const ProtectedRoute = ({ element, isAuthenticated }) => {
     return isAuthenticated ? element : <Navigate to="/" />;
 };
 
-function RouteComponent() {
+function ProtectedRouteComponent() {
     // Load authentication state from localStorage
     const [isAuthenticated, setIsAuthenticated] = useState(
         localStorage.getItem("isAuthenticated") === "true"
@@ -57,6 +57,6 @@ function RouteComponent() {
     );
 }
 
-export default RouteComponent;
+export default ProtectedRouteComponent;
 
 
