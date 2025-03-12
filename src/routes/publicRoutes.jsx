@@ -15,6 +15,8 @@ import ProductForm from "../pages/ProductForm";
 import Sidebar from "../layouts/Sidebar";
 import InvoiceForm from "../pages/InvoiceForm";  // InvoiceForm import karo
 import "../styles/index.css"
+import { Challan } from "../pages/challan";
+import { ChallanForm } from "../pages/challan_form";
 // Protected Route Component
 
 function PublicRouteComponent() {
@@ -49,6 +51,8 @@ function PublicRouteComponent() {
                 <Route path="/products" element={<Products></Products>}/>
                 <Route path="/reports" element={<Reports></Reports>}/>
                 <Route path="/settings" element={<Settings></Settings>}/>
+                <Route path="/challan" element={<Challan></Challan>}/>
+                <Route path="/add-challan" element={<ChallanForm></ChallanForm>}/>
                
             </Routes>
         </Router>

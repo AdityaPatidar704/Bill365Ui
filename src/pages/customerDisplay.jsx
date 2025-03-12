@@ -43,7 +43,6 @@ function CustomerDisplay({ customerListUpdated }) {
     fetchCustomers();
 }, []);
 
-
   // Filter customers based on search input
   const filteredCustomers = customers.filter((customer) =>
     `${customer.customer_id} ${customer.first_name} ${customer.last_name} ${customer.email} ${customer.company_name}`
@@ -92,7 +91,6 @@ function CustomerDisplay({ customerListUpdated }) {
         <ButtonComponent className="add-customer-button" onClick="handleNoNeed" value="Add Customer" label="Add Customer"></ButtonComponent>
         </NavLink>
       </div>
-
         <table className="customer-table gopal">
         <thead>
   <tr>

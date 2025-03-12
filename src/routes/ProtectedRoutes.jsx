@@ -15,6 +15,8 @@ import ProductForm from "../pages/ProductForm";
 import Sidebar from "../layouts/Sidebar";
 import InvoiceForm from "../pages/InvoiceForm";  // InvoiceForm import karo
 import "../styles/index.css"
+import { Challan } from "../pages/challan";
+import { ChallanForm } from "../pages/challan_form";
 // Protected Route Component
 const ProtectedRoute = ({ element, isAuthenticated }) => {
     return isAuthenticated ? element : <Navigate to="/" />;
@@ -47,6 +49,8 @@ function ProtectedRouteComponent() {
                 <Route path="/edit/:id" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<EditCustomer />} />} />
                 <Route path="/invoices" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<Invoices />} />} />
                 <Route path="/add-invoice" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<InvoiceForm />} />} />
+                <Route path="/challan" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<Challan />} />} />
+                <Route path="/add-challan" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<ChallanForm />} />} />
 
                 <Route path="/payments" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<Payments />} />} />
                 <Route path="/products" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<Products />} />} />

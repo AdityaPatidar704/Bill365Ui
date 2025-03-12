@@ -849,8 +849,9 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
               >
                 Generate Invoice
               </button> */}
-
+      <NavLink to="/invoices">
               <ButtonComponent value="submit" label="Generate Invoice" className="px-6 py-3 text-white bg-green-600 rounded-md hover:bg-green-700"></ButtonComponent>
+              </NavLink>
             </div>
           </form>
         </div>

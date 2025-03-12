@@ -5,22 +5,16 @@ import "../styles/Products.css"; // Import the CSS file
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ButtonComponent } from "../components/ButtonComponent/btn";
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 
 const Products = () => {
   const [search, setSearch] = useState("");
   const [productList, setProductList] = useState([]);
+  const [isPrint,setIsPrint]=useState(false);
+  const contentRef = useRef();
+  const reactToPrintFn = useReactToPrint({ contentRef });
 
-  // Fetch products from backend
-  // useEffect(() => {
-  //   fetch("http://localhost:5003/api/products", {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setProductList(data))
-  //     .catch((error) => console.error("Error fetching products:", error));
-  // }, []);
   const navigate=useNavigate();
   useEffect(()=>{
     const fetchProduct= async()=>{
@@ -89,8 +83,9 @@ const Products = () => {
         <NavLink to="/add-product">
         <ButtonComponent className="add-customer-button" label="Add Product" value="addProduct"></ButtonComponent>
         </NavLink>
+        <ButtonComponent className="btn btn-primary" onClick={reactToPrintFn} label="Print Product" value="print"></ButtonComponent>
       </div>
-
+      <div ref={contentRef}>
       <table className="customer-table">
         <thead>
           <tr>
@@ -112,8 +107,8 @@ const Products = () => {
               <tr key={product.product_id}>
                 <td>{product.product_name}</td>
                 <td>{product.product_id}</td>
-                <td>{product.hsn_sac_code}</td>
                 <td>{product.product_code}</td>
+                <td>{product.product_hsn_code}</td>
                 <td>{product.product_description}</td>
                 <td>{product.product_type}</td>
                 <td>{product.unit_price}</td>
@@ -132,6 +127,7 @@ const Products = () => {
           )}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

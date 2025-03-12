@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
-import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 const Sidebar = () => {
   return (
     <>
@@ -20,7 +20,7 @@ const Sidebar = () => {
           </button>
           <div
             className="text-white offcanvas offcanvas-start"
-            style={{ backgroundColor: "rgba(67,120,212,255)",width:"20vw"}}
+            style={{ backgroundColor: "rgba(67,120,212,255)", width: "20vw" }}
             id="navbar"
           >
             <div className="offcanvas-header">
@@ -103,6 +103,20 @@ const Sidebar = () => {
                 >
                   <span className="p-2 bi bi-file-text"></span>
                   Generate Bill
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/challan"
+                  className={({ isActive }) => {
+                    return isActive
+                      ? "p-2 pb-3 d-inline-block text-decoration-none bg-white text-blue-500 rounded-lg"
+                      : "p-2 pb-3 d-inline-block text-decoration-none text-white hover:text-sky-500 transition-colors duration-200";
+                  }}
+                  style={{ width: "100%" }} // Ensures the width remains the same
+                >
+                  <span className="p-2 bi bi-file-text"></span>
+                  Challan
                 </NavLink>
               </li>
               <li className="nav-item">
