@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"; // Use existing CSS for consistency
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 
 function EditCustomer() {
     const navigate = useNavigate();
@@ -104,6 +105,8 @@ function EditCustomer() {
                         <button type="submit" className="submit_button">
                             Save Changes
                         </button>
+
+                        {/* <ButtonComponent className="submit_button" value="submit" label="Submit"></ButtonComponent> */}
                         <button 
                             type="button" 
                             className="cancel_button" 
@@ -111,6 +114,7 @@ function EditCustomer() {
                         >
                             Cancel
                         </button>
+                        {/* <ButtonComponent className="cancel_button" onClick="navigate(-1)" value="submit" label="Submit"></ButtonComponent> */}
                     </div>
                 </form>
             </div>

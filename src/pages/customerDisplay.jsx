@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/customerDisplay.css"; // Import the CSS file
 import Sidebar from '../layouts/Sidebar'; // Make sure Sidebar is correctly imported
 import axios from "axios";
-
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 
 function CustomerDisplay({ customerListUpdated }) {
   const [customers, setCustomers] = useState([]);
@@ -87,9 +87,10 @@ function CustomerDisplay({ customerListUpdated }) {
           onChange={(e) => setSearch(e.target.value)}
           className="search-bar"
         />
-        <a href="/home">
-        <button className="add-customer-button">Add Customer</button>
-        </a>
+        <NavLink to="/home">
+        {/* <button className="add-customer-button">Add Customer</button> */}
+        <ButtonComponent className="add-customer-button" onClick="handleNoNeed" value="Add Customer" label="Add Customer"></ButtonComponent>
+        </NavLink>
       </div>
 
         <table className="customer-table gopal">

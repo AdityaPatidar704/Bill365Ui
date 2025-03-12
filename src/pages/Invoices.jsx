@@ -6,6 +6,7 @@ import InvoiceForm from "./InvoiceForm";
 import axios from "axios";
 import "../styles/Invoices.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 
 const Invoices = () => {
   const [invoicesData, setInvoicesData] = useState([]);
@@ -53,9 +54,12 @@ const Invoices = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-bar"
         />
-        <button className="add-customer-button">
+        {/* <button className="add-customer-button">
           <NavLink to="/add-invoice" className="text-white text-decoration-none">Invoices</NavLink>
-        </button>
+        </button> */}
+        <NavLink to="/add-invoice" className="text-white text-decoration-none">
+        <ButtonComponent className="add-customer-button" label="Invoices" value="invoices"></ButtonComponent>
+        </NavLink>
       </div>
       <table className="customer-table gopal">
         <thead>

@@ -1,127 +1,10 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// import "./ProductForm.css";
-
-// const ProductForm = () => {
-//   const navigate = useNavigate(); // ✅ useNavigate hook
-
-//   const [formData, setFormData] = useState({
-//     product_name: "",
-//     product_id: "",
-//     product_code: "",
-//     hsn_sac_code: "",
-//     product_description: "",
-//     product_type: "",
-//     unit_price: "",
-//     tax_rate: "",
-//     currency: "",
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post("http://localhost:5001/products/add", formData);
-//       alert("Product added successfully!");
-//       console.log(response.data);
-
-//       // ✅ Navigate to products page after successful submission
-//       navigate("/products");
-
-//       // Reset form after submission
-//       setFormData({
-//         product_name: "",
-//         product_id: "",
-//         product_code: "",
-//         hsn_sac_code: "",
-//         product_description: "",
-//         product_type: "",
-//         unit_price: "",
-//         tax_rate: "",
-//         currency: "",
-//       });
-//     } catch (error) {
-//       console.error("Error adding product:", error);
-//       alert("Failed to add product");
-//     }
-//   };
-
-//   return (
-//     <div className="bodye">
-//       <div className="container">
-//         <h1>Product Form</h1>
-//         <form className="form-grid" onSubmit={handleSubmit}>
-//           <div>
-//             <label htmlFor="product_name">Product Name:</label>
-//             <input type="text" name="product_name" id="product_name" value={formData.product_name} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="product_id">Product ID:</label>
-//             <input type="text" name="product_id" id="product_id" value={formData.product_id} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="product_code">Product Code:</label>
-//             <input type="text" name="product_code" id="product_code" value={formData.product_code} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="hsn_sac_code">HSN/SAC Code:</label>
-//             <input type="number" name="hsn_sac_code" id="hsn_sac_code" value={formData.hsn_sac_code} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="product_description">Product Description:</label>
-//             <input name="product_description" id="product_description" value={formData.product_description} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="product_type">Product Type:</label>
-//             <input type="text" name="product_type" id="product_type" value={formData.product_type} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="unit_price">Unit Price:</label>
-//             <input type="number" name="unit_price" id="unit_price" value={formData.unit_price} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="tax_rate">Tax Rate (%):</label>
-//             <input type="number" name="tax_rate" id="tax_rate" value={formData.tax_rate} onChange={handleChange} required />
-//           </div>
-
-//           <div>
-//             <label htmlFor="currency">Currency:</label>
-//             <input type="text" name="currency" id="currency" value={formData.currency} onChange={handleChange} required />
-//           </div>
-
-//           <div className="button-container">
-//             <button type="submit" className="submit_button">Submit</button>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductForm;
-
-
 
 import React from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/ProductForm.css";
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 
 const ProductForm = () => {
   const navigate = useNavigate(); // useNavigate hook
@@ -171,7 +54,10 @@ const ProductForm = () => {
       <div className="flex justify-center py-8">
         <div className="w-full max-w-4xl p-8 bg-white rounded-lg shadow-md">
           <h1 className="mb-6 text-3xl font-semibold text-center text-gray-800 d-inline-block">Product Form</h1>
-          <button className="btn btn-primary float-end"><NavLink to="/products" className="text-white text-decoration-none">close</NavLink></button>
+          {/* <button className="btn btn-primary float-end"><NavLink to="/products" className="text-white text-decoration-none">close</NavLink></button> */}
+          <NavLink to="/products">
+          <ButtonComponent className="btn btn-primary float-end" value="close" label="close"></ButtonComponent>
+          </NavLink>
           <form id="product_Form" onSubmit={formik.handleSubmit}>
             <div className="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
               <div>
@@ -306,8 +192,10 @@ const ProductForm = () => {
               </div>
             </div>
             <div className="flex justify-center gap-4 mt-6">
-              <button className="w-1/3 py-2 text-white transition-transform transform bg-blue-600 rounded-md hover:bg-blue-700 hover:scale-105" type="submit">Submit</button>
-              <button className="w-1/3 py-2 text-white transition-transform transform bg-gray-600 rounded-md hover:bg-gray-700 hover:scale-105" type="button">Product List</button>
+              {/* <button className="w-1/3 py-2 text-white transition-transform transform bg-blue-600 rounded-md hover:bg-blue-700 hover:scale-105" type="submit">Submit</button> */}
+              {/* <button className="w-1/3 py-2 text-white transition-transform transform bg-gray-600 rounded-md hover:bg-gray-700 hover:scale-105" type="button">Product List</button> */}
+              <ButtonComponent className="w-1/3 py-2 text-white transition-transform transform bg-blue-600 rounded-md hover:bg-blue-700 hover:scale-105" value="submit" label="Submit"></ButtonComponent>
+              <ButtonComponent className="w-1/3 py-2 text-white transition-transform transform bg-gray-600 rounded-md hover:bg-gray-700 hover:scale-105" value="productList" label="Product List"></ButtonComponent>
             </div>
           </form>
         </div>

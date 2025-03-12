@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/LoginRegister.css"
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 const LoginRegister = ({ setAuth }) => {
     const [formType, setFormType] = useState("login");
     const [email, setEmail] = useState("");
@@ -77,14 +78,16 @@ const LoginRegister = ({ setAuth }) => {
                 <form onSubmit={handleLogin} className="mt-4">
                     <input className="form-control m-2" size="40" type="email" placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <input className="form-control m-2" size="40" type="password" placeholder="Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                    <button className="btn btn-success w-100 m-2" type="submit">Login</button>
+                    {/* <button className="btn btn-success w-100 m-2" type="submit">Login</button> */}
+                    <ButtonComponent className="btn btn-success w-100 m-2" value="login" label="Login"></ButtonComponent>
                 </form>
             ) : (
                 <form onSubmit={handleRegister} className="mt-3">
                     <input className="form-control m-2" size="40" type="text" placeholder="Enter your Name" value={username} onChange={(e) => setName(e.target.value)} required />
                     <input className="form-control m-2" size="40"  type="email" placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <input className="form-control m-2" size="40" type="password" placeholder="Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                    <button className="btn btn-warning w-100 m-2" type="submit">Register</button>
+                    {/* <button className="btn btn-warning w-100 m-2" type="submit">Register</button> */}
+                    <ButtonComponent className="btn btn-warning w-100 m-2" value="register" label="Register"></ButtonComponent>
                 </form>
             )}
             </div>

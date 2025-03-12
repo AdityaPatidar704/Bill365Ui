@@ -6,6 +6,7 @@ import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 import { useFormik } from "formik";
 import { NavLink } from "react-router-dom";
 import { debounce } from "lodash";
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 export default function InvoiceForm({ onInvoiceAdded }) {
   const [customers, setCustomers] = useState([]);
   const [dd, setdd] = useState(new Date());
@@ -301,6 +302,7 @@ if (totall >= 10000000) { // Check if num is 10 million or more
   result += toWords(crores) + units[2]; // result = "1 crore"
   totall %= 10000000; // num = 5000000
   setAmountWords(result.toUpperCase()+" RUPEES ONLY/-");
+  
 }
 
 // Handle lakhs
@@ -316,6 +318,10 @@ if(totall>0){ // Check if num is greater than 0
   const word=toWords(parseFloat(totall,10));
     setAmountWords(result.toUpperCase()+" "+word.toUpperCase()+" RUPEES ONLY/-");
 }
+if(index==0)
+  {
+    setAmountWords("zero");
+  }
 
 
 console.log(result.trim()); // Output: "1 crore 5 lakh"
@@ -424,7 +430,11 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
           <h2 className="mb-6 text-3xl font-semibold text-center text-gray-800 d-inline-block">
             Invoice Form
           </h2>
-          <button className="btn btn-primary float-end"><NavLink to="/invoices" className="text-white text-decoration-none" >Close</NavLink></button>
+          {/* <button className="btn btn-primary float-end"><NavLink to="/invoices" className="text-white text-decoration-none" >Close</NavLink></button>
+           */}
+           <NavLink to="/invoices" className="text-white text-decoration-none">
+           <ButtonComponent className="btn btn-primary float-end" value="close" label="Close"></ButtonComponent>
+           </NavLink>
           <form className="" onSubmit={formik.handleSubmit}>
             <div className="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
               <div>
@@ -697,7 +707,7 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
                         />
                       </td>
                       <td>
-                        <button
+                        {/* <button
                           type="button"
                           className="p-2 text-white bg-red-500 rounded-md hover:bg-red-600"
                           onClick={() => {
@@ -712,19 +722,32 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
                           }}
                         >
                           Remove
-                        </button>
+                        </button> */}
+                        <ButtonComponent className="p-2 text-white bg-red-500 rounded-md hover:bg-red-600"
+                        label="Remove" value="remove" onClick={() => {
+                          const updatedRows = productRows.filter(
+                            (_, i) => i !== index
+                          );
+                          console.log(index);
+                          const qtyGet=productRows[index].quantity;
+                          console.log(qtyGet);
+                          handleQuantityChange(index,qtyGet,"remove");
+                          setProductRows(updatedRows);
+                        }}
+                        ></ButtonComponent>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <button
+              {/* <button
                 type="button"
                 className="p-3 mt-4 text-white bg-blue-700 rounded-md hover:bg-blue-800"
                 onClick={handleAddProductRow}
               >
                 Add Product
-              </button>
+              </button> */}
+              <ButtonComponent value="button" label="Add Product" onClick={handleAddProductRow} className="p-3 mt-4 text-white bg-blue-700 rounded-md hover:bg-blue-800"></ButtonComponent>
             </div>
 
             <div className="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
@@ -820,12 +843,14 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
             </div>
 
             <div className="flex justify-end">
-              <button
+              {/* <button
                 type="submit"
                 className="px-6 py-3 text-white bg-green-600 rounded-md hover:bg-green-700"
               >
                 Generate Invoice
-              </button>
+              </button> */}
+
+              <ButtonComponent value="submit" label="Generate Invoice" className="px-6 py-3 text-white bg-green-600 rounded-md hover:bg-green-700"></ButtonComponent>
             </div>
           </form>
         </div>

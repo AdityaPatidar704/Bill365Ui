@@ -4,6 +4,7 @@ import "../styles/ProductForm.css"; // Using the same CSS as ProductForm
 import { useFormik } from "formik";
 import axios from "axios";
 import { debounce } from "lodash";
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 export default function CustomerForm({
   onCustomerAdded,
   editCustomer,
@@ -718,12 +719,13 @@ export default function CustomerForm({
             </div>
           </div>
           <div className="flex justify-center mt-6">
-            <button
+            {/* <button
               type="submit"
               className="w-1/3 py-2 text-sm font-semibold text-white transition duration-300 transform bg-blue-600 rounded-full hover:bg-blue-800 hover:scale-105"
             >
               Submit
-            </button>
+            </button> */}
+            <ButtonComponent value="Submit" label="Submit" className="w-1/3 py-2 text-sm font-semibold text-white transition duration-300 transform bg-blue-600 rounded-full hover:bg-blue-800 hover:scale-105"></ButtonComponent>
           </div>
         </form>
       </div>

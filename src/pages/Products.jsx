@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import Sidebar from '../layouts/Sidebar'; // Make sure Sidebar is correctly imported
 import "../styles/Products.css"; // Import the CSS file
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ButtonComponent } from "../components/ButtonComponent/btn";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -82,9 +83,12 @@ const Products = () => {
           onChange={(e) => setSearch(e.target.value)}
           className="search-bar"
         />
-        <a href="/add-product">
+        {/* <a href="/add-product">
           <button className="add-customer-button">Add Product</button>
-        </a>
+        </a> */}
+        <NavLink to="/add-product">
+        <ButtonComponent className="add-customer-button" label="Add Product" value="addProduct"></ButtonComponent>
+        </NavLink>
       </div>
 
       <table className="customer-table">
