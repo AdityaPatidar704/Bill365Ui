@@ -723,7 +723,7 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
                         >
                           Remove
                         </button> */}
-                        <ButtonComponent className="p-2 text-white bg-red-500 rounded-md hover:bg-red-600"
+                        <ButtonComponent type="button" className="p-2 text-white bg-red-500 rounded-md hover:bg-red-600"
                         label="Remove" value="remove" onClick={() => {
                           const updatedRows = productRows.filter(
                             (_, i) => i !== index
@@ -747,7 +747,7 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
               >
                 Add Product
               </button> */}
-              <ButtonComponent value="button" label="Add Product" onClick={handleAddProductRow} className="p-3 mt-4 text-white bg-blue-700 rounded-md hover:bg-blue-800"></ButtonComponent>
+              <ButtonComponent type="submit" value="button" label="Add Product" onClick={handleAddProductRow} className="p-3 mt-4 text-white bg-blue-700 rounded-md hover:bg-blue-800"></ButtonComponent>
             </div>
 
             <div className="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
@@ -849,9 +849,7 @@ console.log(result.trim()); // Output: "1 crore 5 lakh"
               >
                 Generate Invoice
               </button> */}
-      <NavLink to="/invoices">
-              <ButtonComponent value="submit" label="Generate Invoice" className="px-6 py-3 text-white bg-green-600 rounded-md hover:bg-green-700"></ButtonComponent>
-              </NavLink>
+              <ButtonComponent type="submit" value="submit" label="Generate Invoice" className="px-6 py-3 text-white bg-green-600 rounded-md hover:bg-green-700"><NavLink to="/invoices"></NavLink></ButtonComponent>
             </div>
           </form>
         </div>

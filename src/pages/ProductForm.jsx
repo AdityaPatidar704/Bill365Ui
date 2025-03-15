@@ -194,8 +194,8 @@ const ProductForm = () => {
             <div className="flex justify-center gap-4 mt-6">
               {/* <button className="w-1/3 py-2 text-white transition-transform transform bg-blue-600 rounded-md hover:bg-blue-700 hover:scale-105" type="submit">Submit</button> */}
               {/* <button className="w-1/3 py-2 text-white transition-transform transform bg-gray-600 rounded-md hover:bg-gray-700 hover:scale-105" type="button">Product List</button> */}
-              <ButtonComponent className="w-1/3 py-2 text-white transition-transform transform bg-blue-600 rounded-md hover:bg-blue-700 hover:scale-105" value="submit" label="Submit"></ButtonComponent>
-              <ButtonComponent className="w-1/3 py-2 text-white transition-transform transform bg-gray-600 rounded-md hover:bg-gray-700 hover:scale-105" value="productList" label="Product List"></ButtonComponent>
+              <ButtonComponent type="submit" className="w-1/3 py-2 text-white transition-transform transform bg-blue-600 rounded-md hover:bg-blue-700 hover:scale-105" value="submit" label="Submit"></ButtonComponent>
+              <ButtonComponent type="button" className="w-1/3 py-2 text-white transition-transform transform bg-gray-600 rounded-md hover:bg-gray-700 hover:scale-105" value="productList" label="Product List"></ButtonComponent>
             </div>
           </form>
         </div>

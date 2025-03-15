@@ -18,6 +18,9 @@ export function Challan() {
   function handleModalClick(){
     setIsClicked(true);
   }
+  function closeBtn(){
+    setIsClicked(false);
+  }
   const debounceCall=debounce((value=>{
     console.log(value);
     setCustomerId(value);
@@ -25,23 +28,69 @@ export function Challan() {
   function customerIdGet(e){
         debounceCall(e.target.value);    
 }
+const [challan, setChallan] = useState([]);
+const [search, setSearch] = useState(""); // Search state
+const navigate=useNavigate();
 function handleChallanCheck(){
-    alert(JSON.stringify(customerId));
+    const fetchChallan=async ()=>{
+        try{
+            const token=localStorage.getItem("token");
+            const res=await axios.get(`http://localhost:5003/api/challandetails/provideing/${customerId}`,{
+                headers:{
+                    Authorization : `Bearer ${token}`
+                }
+            })
+            console.log(JSON.stringify(res.data));
+            setChallan(res.data);   
+            console.log(res.data[0].challan_date);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    fetchChallan();
+    setIsClicked(false);
 }
+const fetchChallanDetail=challan.filter((challan)=>
+`${challan.challan_id}`
+      .toLowerCase()
+      .includes(search.toLowerCase())
+)
+const handleEdit = (customer) => {
+    alert(JSON.stringify(customer));
+    // navigate(`/edit/${customer.id}`, { state: { customer } });
+  };
+  const deleteCustomer = async (id) => {
+    console.log(id)
+    alert(id);
+    if (!window.confirm("Are you sure you want to delete this customer?")) return;
+
+    try {
+      const response = await fetch(`http://localhost:5003/api/customers/${id}`, { method: "DELETE" });
+
+      if (response.ok) {
+        alert("Customer deleted successfully");
+        handleChallanCheck();
+      } else {
+        alert("Error deleting customer");
+      }
+    } catch (error) {
+      console.error("Error deleting customer:", error);
+    }
+  };
   return (
     <div>
       <Sidebar></Sidebar>
-      <div className="mt-2 header-topper gopal">
+      <div className="mt-2 header-topper gopal" >
         <h1 className="gopa">Challan</h1>
         <input
           type="text"
-          placeholder="Search Challan..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search Challan by Id.."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           className="search-bar"
         />
-      </div>
-      <div>
         <button
           type="button"
           onClick={handleModalClick}
@@ -49,17 +98,23 @@ function handleChallanCheck(){
         >
           Get Challan
         </button>
+        <NavLink to="/add-challan">
+        <ButtonComponent className="btn btn-primary" label="Add Challan" value="challanAdd"></ButtonComponent>
+        </NavLink>
+      </div>
+      <div>
         <div className="modal" style={{display:isClicked?"inline-block":"none"}}>
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h2 className="modal-title">Enter your Customer id:-</h2>
+                            <h2 className="modal-title">Enter your Customer number:-</h2>
+                            <button className="btn btn-close" onClick={closeBtn}></button>
                         </div>
                         <div className="modal-body">
                             <input type="text" onChange={customerIdGet} className="form-control" placeholder="Enter customer id" />
                         </div>
                         <div className="modal-footer">
-                            <ButtonComponent className="btn btn-primary" label="Search Challan's" value="challan" onClick={handleChallanCheck}></ButtonComponent>
+                            <ButtonComponent type="button" className="btn btn-primary" label="Search Challan's" value="challan" onClick={handleChallanCheck}></ButtonComponent>
                         </div>
                     </div>
                 </div>
@@ -75,6 +130,32 @@ function handleChallanCheck(){
             <th>Actions</th>
           </tr>
         </thead>
+        <tbody>
+            {fetchChallanDetail.length>0?(
+                    fetchChallanDetail.map((challan) => {
+                        console.log(challan); // Debugging step
+                        return (
+                          <tr key={challan.challan_id}>
+                            <td>{challan.challan_id}</td>
+                            <td>{challan.challan_date}</td>
+                            <td>{challan.total_amount}</td>
+                            <td></td>
+                            <td>
+                              <button id="btn" onClick={() => handleEdit(challan)}>Edit</button>
+                              <button id="buton" onClick={() => deleteCustomer(challan.challan_id)}>Delete</button>
+                            </td>
+                          </tr>
+                        );
+                      })
+            ):
+            <tr>
+      <td colSpan="6" style={{ textAlign: "center"}}>
+        Please insert cutomer mobile no from get challan button
+      </td>
+    </tr>
+            }
+        </tbody>
+        
       </table>
     </div>
   );

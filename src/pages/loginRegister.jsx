@@ -87,7 +87,7 @@ const LoginRegister = ({ setAuth }) => {
                     <input className="form-control m-2" size="40"  type="email" placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <input className="form-control m-2" size="40" type="password" placeholder="Enter your Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     {/* <button className="btn btn-warning w-100 m-2" type="submit">Register</button> */}
-                    <ButtonComponent className="btn btn-warning w-100 m-2" value="register" label="Register"></ButtonComponent>
+                    <ButtonComponent type="submit" className="btn btn-warning w-100 m-2" value="register" label="Register"></ButtonComponent>
                 </form>
             )}
             </div>

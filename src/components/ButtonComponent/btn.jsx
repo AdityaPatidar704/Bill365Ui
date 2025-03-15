@@ -3,6 +3,6 @@ export function ButtonComponent(props){
 
     }
     return(
-        <button className={props.className} onClick={props.onClick?props.onClick:undefined} value={props.value}>{props.label}</button>
+        <button type={props.type?props.type:undefined} className={props.className} onClick={props.onClick?props.onClick:undefined} value={props.value}>{props.label}</button>
     )
 }

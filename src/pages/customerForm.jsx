@@ -725,7 +725,7 @@ export default function CustomerForm({
             >
               Submit
             </button> */}
-            <ButtonComponent value="Submit" label="Submit" className="w-1/3 py-2 text-sm font-semibold text-white transition duration-300 transform bg-blue-600 rounded-full hover:bg-blue-800 hover:scale-105"></ButtonComponent>
+            <ButtonComponent value="Submit" type="submit" label="Submit" className="w-1/3 py-2 text-sm font-semibold text-white transition duration-300 transform bg-blue-600 rounded-full hover:bg-blue-800 hover:scale-105"></ButtonComponent>
           </div>
         </form>
       </div>
