@@ -21,6 +21,7 @@ import { ChallanForm } from "../pages/challan_form";
 import PublicRoutes from "./publicRoute";
 import ProtectedRoute from "./protectedRoute";
 import "../styles/index.css";
+import { GenerateInvoice } from "../pages/generateInvoice";
 
 function RouteComponent() {
     const [isAuthenticated, setIsAuthenticated] = useState(
@@ -56,6 +57,7 @@ function RouteComponent() {
                 <Route path="/products" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<Products />} />} />
                 <Route path="/reports" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<Reports />} />} />
                 <Route path="/settings" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<Settings />} />} />
+                <Route path="/generate-invoice" element={<ProtectedRoute isAuthenticated={isAuthenticated} element={<GenerateInvoice />} />} />
             </Routes>
         </Router>
     );

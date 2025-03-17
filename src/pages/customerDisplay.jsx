@@ -4,6 +4,7 @@ import "../styles/customerDisplay.css"; // Import the CSS file
 import Sidebar from '../layouts/Sidebar'; // Make sure Sidebar is correctly imported
 import axios from "axios";
 import { ButtonComponent } from "../components/ButtonComponent/btn";
+import { InputComponent } from "../components/InputComponent/input";
 
 function CustomerDisplay({ customerListUpdated }) {
   const [customers, setCustomers] = useState([]);
@@ -79,13 +80,12 @@ function CustomerDisplay({ customerListUpdated }) {
       <Sidebar />
       <div className="header-topper gopal">
         <h1 className="gopa">Customer Management</h1>
-        <input
-          type="text"
-          placeholder="Search customers..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="search-bar"
-        />
+        <InputComponent
+        type="text"
+        placeholder="Search Customer Detail.."
+        value={search}
+        onChange={(e)=>setSearch(e.target.value)}
+        classNameInput="search-bar"></InputComponent>
         <NavLink to="/home">
         {/* <button className="add-customer-button">Add Customer</button> */}
         <ButtonComponent className="add-customer-button" onClick="handleNoNeed" value="Add Customer" label="Add Customer"></ButtonComponent>

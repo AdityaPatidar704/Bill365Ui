@@ -1,4 +1,4 @@
-import ProtectedRouteComponent from "./routes/ProtectedRoutes";
+// import ProtectedRouteComponent from "./routes/ProtectedRoutes";
 import RouteComponent from "./routes/routes";
 
 function App(){

@@ -1,0 +1,19 @@
+    #invoice h4{
+        text-align: center;
+    }
+    .customer_name{
+        text-align: left !important;
+    }
+    @media print {
+        @page {
+            size: 8.5in 11in;
+        
+          }
+    }
+    #invoice{  
+        display: flex;
+        justify-content: center;
+    }
+    .invoiceWidth{
+        width: 30vw;
+    }

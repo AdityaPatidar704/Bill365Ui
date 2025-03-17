@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../layouts/Sidebar"; // Make sure Sidebar is correctly imported
 import InvoiceForm from "./InvoiceForm";
 import "../styles/Invoices.css";
-
+import "../styles/customerDisplay.css"; // Import the CSS file
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ButtonComponent } from "../components/ButtonComponent/btn";
@@ -11,6 +11,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import { debounce } from "lodash";
+import { InputComponent } from "../components/InputComponent/input.jsx";
 export function Challan() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isClicked, setIsClicked] = useState(false);
@@ -84,13 +85,20 @@ const handleEdit = (customer) => {
       <Sidebar></Sidebar>
       <div className="mt-2 header-topper gopal" >
         <h1 className="gopa">Challan</h1>
-        <input
+        {/* <input
           type="text"
           placeholder="Search Challan by Id.."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="search-bar"
-        />
+        /> */}
+        <InputComponent
+        type="text"
+        placeholder="Search Challan by Id.."
+        value={search}
+        onChange={(e)=>setSearch(e.target.value)}
+        classNameInput="search-bar"
+        ></InputComponent>
         <button
           type="button"
           onClick={handleModalClick}

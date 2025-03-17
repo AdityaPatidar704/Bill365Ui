@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { debounce } from "lodash";
 import { ButtonComponent } from "../components/ButtonComponent/btn";
+import { InputComponent } from "../components/InputComponent/input";
 export default function CustomerForm({
   onCustomerAdded,
   editCustomer,
@@ -142,7 +143,6 @@ export default function CustomerForm({
       customer_id: "",
       company_name: "",
       email: "",
-      company_name: "",
       first_name: "",
       last_name: "",
       phone: "",
@@ -195,12 +195,12 @@ export default function CustomerForm({
             }
           );
           alert(JSON.stringify(values));
+          navigate("/display");
         } catch (err) {
           console.log(err);
         }
       };
       addCustomersData();
-      navigate("/display");
     },
   });
 
@@ -267,141 +267,121 @@ export default function CustomerForm({
         <form id="customerForm" onSubmit={formik.handleSubmit}>
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <label
-                for="Customer-Id"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Customer-Id:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="Customer-Id"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Customer-Id:"
                 type="number"
                 id="Customer-Id"
                 name="customer_id"
                 onChange={formik.handleChange}
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Customer ID"
               />
             </div>
             <div>
-              <label
-                for="Company_name"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Company Name:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="Company_name"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Company Name:"
                 type="text"
                 onChange={formik.handleChange}
                 id="Company_name"
                 name="company_name"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Company Name"
               />
             </div>
             <div>
-              <label
-                for="first_name"
-                className="text-sm font-semibold text-gray-700"
-              >
-                First Name:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="first_name"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="First Name:"
                 type="text"
                 onChange={formik.handleChange}
                 id="first_name"
                 name="first_name"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter First Name"
               />
             </div>
 
             <div>
-              <label
-                for="last_name"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Last Name:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="last_name"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Last Name:"
                 type="text"
                 onChange={formik.handleChange}
                 id="last_name"
                 name="last_name"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Last Name"
               />
             </div>
 
             <div>
-              <label
-                for="Email"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Email:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="Email"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Email:"
                 type="email"
                 onChange={formik.handleChange}
                 // id="email"
                 name="email"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Email Address"
               />
             </div>
 
             <div>
-              <label
-                for="phone"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Phone:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="phone"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Phone:"
+              
                 type="number"
                 id="phone"
                 onChange={formik.handleChange}
                 name="phone"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Phone Number"
               />
             </div>
             <div>
-              <label
-                for="mobile"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Mobile:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="mobile"
+                classNameLabel="text-sm font-semibold text-gray-700"
+              
+                labelInput="Mobile:"
+              
+              
                 type="number"
                 id="mobile"
                 onChange={formik.handleChange}
                 name="mobile"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Phone Number"
               />
             </div>
             <div>
-              <label
-                for="tax_id"
-                className="text-sm font-semibold text-gray-700"
-              >
-                GSTN:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="tax_id"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="GSTN:"
                 type="number"
                 id="tax_id"
                 onChange={formik.handleChange}
                 name="tax_id"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter GSTN"
               />
             </div>
@@ -421,7 +401,6 @@ export default function CustomerForm({
                 placeholder="Enter Address 1"
               ></textarea>
             </div>
-
             <div>
               <label
                 for="address_2"
@@ -438,27 +417,24 @@ export default function CustomerForm({
               ></textarea>
             </div>
             <div>
-              <label for="Fax" className="text-sm font-semibold text-gray-700">
-                Fax:
-              </label>
-              <input
+              <InputComponent htmlFor="Fax" classNameLabel="text-sm font-semibold text-gray-700"
+               labelInput="Fax:"
                 type="number"
                 id="fax"
                 onChange={formik.handleChange}
                 name="fax"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Fax"
               />
             </div>
             <div>
-              <label
-                for="country"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Country:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="country"
+                classNameLabel="text-sm font-semibold text-gray-700"
+              
+              labelInput="Country:"
+              
                 style={style1}
                 type="text"
                 id="country"
@@ -466,7 +442,7 @@ export default function CustomerForm({
                 value={zipData.country}
                 onChange={formik.handleChange}
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md style2 focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md style2 focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Country Name"
               />
               {/* /////////////////////////////////////////// */}
@@ -491,13 +467,11 @@ export default function CustomerForm({
               </select>
             </div>
             <div>
-              <label
-                for="state"
-                className="text-sm font-semibold text-gray-700"
-              >
-                State:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="state"
+                classNameLabel="text-sm font-semibold text-gray-700"
+              
+               labelInput="State:"
                 type="text"
                 style={style1}
                 id="state"
@@ -505,7 +479,7 @@ export default function CustomerForm({
                 name="state"
                 onChange={formik.handleChange}
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md style2 focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md style2 focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter State Name"
               />
               <select
@@ -529,10 +503,8 @@ export default function CustomerForm({
               </select>
             </div>
             <div>
-              <label for="city" className="text-sm font-semibold text-gray-700">
-                City:
-              </label>
-              <input
+              <InputComponent htmlFor="city" classNameLabel="text-sm font-semibold text-gray-700"
+              labelInput="City:"            
                 style={style1}
                 type="text"
                 id="city"
@@ -540,7 +512,7 @@ export default function CustomerForm({
                 name="city"
                 onChange={formik.handleChange}
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md style2 focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md style2 focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Country Name"
               />
               <select
@@ -564,32 +536,30 @@ export default function CustomerForm({
               </select>
             </div>
             <div>
-              <label for="zip" className="text-sm font-semibold text-gray-700">
-                Zip/Pincode:
-              </label>
-              <input
+              <InputComponent htmlFor="zip" classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Zip/Pincode:"
                 type="number"
                 name="zip_code"
                 onChange={handleZipCodeChange}
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Zip/Pincode"
               />
             </div>
             <div>
-              <label
-                for="billing_city"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Billing City:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="billing_city"
+                classNameLabel="text-sm font-semibold text-gray-700"
+              
+                labelInput="Billing City:"
+              
+              
                 type="text"
                 // id="billing_city"
                 name="billing_city"
                 onChange={formik.handleChange}
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Billing City"
               />
             </div>
@@ -629,91 +599,82 @@ export default function CustomerForm({
             </div>
 
             <div>
-              <label
-                for="billing_state"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Billing State:
-              </label>
-              <input
+              <InputComponent
+                HtmlFor="billing_state"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Billing State:"
                 type="text"
                 id="billing_state"
                 name="billing_state"
                 onChange={formik.handleChange}
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Billing State"
               />
             </div>
 
             <div>
-              <label
-                for="billing_zip"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Billing Zip/Pincode:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="billing_zip"
+                classNameLabel="text-sm font-semibold text-gray-700"
+              
+               labelInput="Billing Zip/Pincode:"
+              
                 type="number"
                 onChange={formik.handleChange}
                 id="billing_zip"
                 name="billing_zip"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Billing Zip/Pincode"
               />
             </div>
 
             <div>
-              <label
-                for="billing_country"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Billing Country:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="billing_country"
+                classNameLabel="text-sm font-semibold text-gray-700"
+                labelInput="Billing Country:"
                 type="text"
                 onChange={formik.handleChange}
                 id="billing_country"
                 name="billing_country"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Billing Country"
               />
             </div>
 
             <div>
-              <label
-                for="currency"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Currency:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="currency"
+                classNameLabel="text-sm font-semibold text-gray-700"
+              
+              labelInput="Currency:"
+              
                 type="text"
                 onChange={formik.handleChange}
                 id="currency"
                 name="currency"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Currency"
               />
             </div>
 
             <div>
-              <label
-                for="language"
-                className="text-sm font-semibold text-gray-700"
-              >
-                Language:
-              </label>
-              <input
+              <InputComponent
+                htmlFor="language"
+                classNameLabel="text-sm font-semibold text-gray-700"
+              
+                labelInput="Language:"
+              
                 type="text"
                 onChange={formik.handleChange}
                 id="language"
                 name="language"
                 required
-                className="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
+                classNameInput="w-full p-2 text-sm transition duration-300 border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 hover:bg-gray-100"
                 placeholder="Enter Language type"
               />
             </div>
